@@ -28,3 +28,31 @@ break-system-packages = true
 - Stream via UDP
 - Receive data via TCP
   
+## Create .service file
+
+Create and open .service file: 
+```
+nano /etc/systemd/system
+```
+
+```picamera.service``` file
+```
+[Unit]
+Description=Picamera
+After=multi-user.target
+
+[Service]
+User=raspi
+WorkingDirectory=/home/raspi/src
+ExecStart=/usr/bin/python /home/raspi/src/test.py
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl start picamera.service
+sudo systemctl enable picamera.service
+sudo systemctl status picamera.service
+```
+
