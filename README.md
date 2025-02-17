@@ -21,6 +21,7 @@
  
 ## Install lib
 ```
+  pip install opencv-python
   sudo apt install -y python3-pyqt5 python3-opengl
   
   sudo apt update && sudo apt upgrade
@@ -40,12 +41,19 @@ Add command into ```/etc/pip.conf```:
   sudo nano /etc/pip.conf
   break-system-packages = true
 ```
-  
+## Check USB Camera
+
+Check /dev/video of usbcamera and replace it into code:
+```
+  sudo apt install v4l-utils
+  v4l2-ctl --list-devices
+```
+
 ## Create .service file
 
 Create and open .service file: 
 ```
-nano /etc/systemd/system
+sudo nano /etc/systemd/system/picamera.service
 ```
 
 `picamera.service` file
@@ -63,6 +71,7 @@ ExecStart=/usr/bin/python /home/raspi/src/test.py
 WantedBy=multi-user.target
 ```
 
+Run service file and check status:
 ```
 sudo systemctl start picamera.service
 sudo systemctl enable picamera.service
