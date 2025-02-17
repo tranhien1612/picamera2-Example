@@ -10,6 +10,7 @@ from libcamera import controls
 #(1280, 720), (1920, 1080), (2048, 1536), (4608, 2592) (3280, 2464)
 
 class MyCameraPi:
+    udpPort = 5600;
     isRecording = False;
     picam2 = None;
     encoder = H264Encoder(17000000) #10000000
@@ -133,7 +134,7 @@ class MyCameraPi:
             host, _ = client_addr;
             if(host != self.host):
                 self.host = host;
-                self.start_stream_udp(self.host, 10001);
+                self.start_stream_udp(self.host, self.udpPort);
 
             tcpThread = threading.Thread(target=self.handle_client, args=(client_socket, client_addr))
             tcpThread.start()
