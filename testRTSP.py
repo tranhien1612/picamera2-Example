@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # Ref: https://gist.github.com/fzwoch/701599167e3b71bd48885ba423b4b24d
 # install lib
+# sudo apt install gstreamer1.0-tools gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
 # sudo apt install gstreamer1.0-rtsp && sudo apt install python3-gst-1.0 && sudo apt install gir1.2-gst-rtsp-server-1.0
+# sudo apt install python3-gi gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0
 import gi
 
 gi.require_version('Gst', '1.0')
